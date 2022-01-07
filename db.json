@@ -1,0 +1,12 @@
+{
+  "people": [
+    {
+      "id": 3,
+      "name": "abhi",
+      "email": "bgvrtvdf ",
+      "age": "2000-06-27",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+      "country": "IN"
+    }
+  ]
+}

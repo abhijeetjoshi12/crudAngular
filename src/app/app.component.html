@@ -1,0 +1,97 @@
+
+
+    <nav class="navbar navbar-dark bg-primary mb-5">
+      <a class="navbar-brand"> CRUD Angular Application </a>
+      <form class="form-inline">
+        <button type="button" (click)="clickAddPerson()" class="btn btn-danger float-right" data-toggle="modal"
+        data-target="#exampleModal">
+        <i class="fa fa-plus"> </i>
+        Add Person
+      </button>
+
+      </form>
+    </nav>
+
+   <div class="container">
+     <div class="row">
+    <div class="card col-md-4 float-left" *ngFor="let person of allPerson">
+      <img class="card-img-top" src="{{person.avatar}}" alt="Card image cap" style="width: 60%" >
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> Name : {{person.name}}</li>
+          <li class="list-group-item"> Email: {{person.email}}</li>
+          <li class="list-group-item"> Date of Birth(dob): {{person.age | age}}</li>
+          <li class="list-group-item"> Country: {{person.country}}</li>
+        </ul>
+
+        <button type="button" class="btn btn-info" (click)="onEdit(person)" data-toggle="modal"
+          data-target="#exampleModal">
+           <i class="fa fa-edit mr-2"> </i>Edit
+        </button>
+
+        <button type="button" (click)="deletePerson(person)" class="btn btn-danger mx-3"> 
+          <i class="fa fa-trash mr-2"> </i>
+          Delete </button>
+
+
+      </div>
+    </div>
+
+ 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formvalue">
+              <div class="form-group">
+                <label> Name </label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter your Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1"> Email </label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Enter your Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1"> Date of Birth(dob) </label>
+                <input type="date" class="form-control" formControlName="age" placeholder="Enter your Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1"> Avatar </label>
+                <input type="text" class="form-control" formControlName="avatar" placeholder="Enter Avatar Link">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1"> Country </label>
+                <select class="form-control" formControlName="country">
+                  <option> Select country name</option>
+                  <option value="IN">India</option>
+                  <option value="USA"> USA </option>
+                  <option value="AUS"> Australia </option>
+                  <option value="ENG"> England </option>
+                </select>
+
+              </div>
+            </form>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" *ngIf="showAdd" class="btn btn-primary" (click)="addPerson()">Submit</button>
+            <button type="button" *ngIf="showUpdate" class="btn btn-success" (click)="updatePersonRecords()">
+              Update</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
